@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TemperatureConverter</string>
+    
+    <string name="selec_unite_source">Selectionnez une unité source</string>
+    <string name="selec_unite_cible">Selectionnez une unité cible</string>
+    
+    <string-array name="unite_cible">
+        <item >Fahrenheit</item>
+        <item >Celsius</item>
+        <item >Kelvin</item>
+    </string-array>
+    <string-array name="unite_source">
+        <item >Fahrenheit</item>
+        <item >Celsius</item>
+        <item >Kelvin</item>
+    </string-array>
+    
+	<string name="button_convert">Convertir</string>
+	
+	
+</resources>

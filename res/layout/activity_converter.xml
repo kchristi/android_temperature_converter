@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}"
+    android:orientation="vertical" >
+   
+    <TextView
+        android:id="@+id/textView_source"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selec_unite_source" />
+    <Spinner 
+        android:id="@+id/spinner_source"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:entries="@array/unite_source"/>
+    <EditText
+        android:id="@+id/editText_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0" />
+   
+    <TextView
+        android:id="@+id/textView_cible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selec_unite_cible" />
+     <Spinner 
+        android:id="@+id/spinner_cible"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:entries="@array/unite_cible"/>
+     <EditText
+        android:id="@+id/editText_cible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0" />
+     
+	<Button
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/button_convert"
+	    android:layout_gravity="center"
+	    android:drawableLeft="@drawable/convert_icon"
+	    android:onClick="convertir" />
+	    
+	
+</LinearLayout>
