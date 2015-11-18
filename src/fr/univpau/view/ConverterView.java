@@ -3,64 +3,28 @@ package fr.univpau.view;
 import fr.univpau.temperatureconverter.R;
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import fr.univpau.business.Converter;
+import fr.univpau.listener.ConvertButtonListener;;
 
 public class ConverterView extends Activity {
 	EditText editText_cible_value;
 	EditText editText_source_value;
 	Spinner spinner_cible_value;
 	Spinner spinner_source_value;
-	
+	Button convert_button;
+	ConvertButtonListener convert_button_listener;
 	
 	public void convertir(View view){
-		String uniteSource=spinner_source_value.getSelectedItem().toString();
-		String uniteCible=spinner_cible_value.getSelectedItem().toString();
-
-		double tempSource=Double.parseDouble(String.valueOf(editText_source_value.getText()));
-		double tempCible=0;
 		
-		if(uniteSource.equals("Celsius")){
-			Log.i("Calcul", "C-Celcius");
-			if(uniteCible.equals("Kelvin")){
-				Log.i("Calcul", "S-Kelvin");
-				tempCible=Converter.celsiusToKelvin(tempSource);
-			}
-			else if(uniteCible.equals("Fahrenheit")){
-				Log.i("Calcul", "S-Fahrenheit");
-				tempCible=Converter.celsiusToFahrenheit(tempSource);
-			}
-		}
-		else if(uniteSource.equals("Kelvin")){
-			Log.i("Calcul", "C-Kelvin");
-			if(uniteCible.equals("Celsius")){
-				Log.i("Calcul", "S-Celsius");
-				tempCible=Converter.kelvinToCelsius(tempSource);
-			}
-			else if(uniteCible.equals("Fahrenheit")){
-				Log.i("Calcul", "S-Fahrenheit");
-				tempCible=Converter.kelvinToFahrenheit(tempSource);
-			}
-		}
-		else if(uniteSource.equals("Fahrenheit")){
-			Log.i("Calcul", "C-Fahrenheit");
-			if(uniteCible.equals("Celsius")){
-				Log.i("Calcul", "S-Celsius");
-				tempCible=Converter.fahrenheitToCelsius(tempSource);
-			}
-			else if(uniteCible.equals("Kelvin")){
-				Log.i("Calcul", "S-Kelvin");
-				tempCible=Converter.fahrenheitToKelvin(tempSource);
-			}
-		}
-		
-		editText_cible_value.setText(String.valueOf(tempCible));
 	}
 	
     @Override
@@ -70,10 +34,17 @@ public class ConverterView extends Activity {
         
         // Allocation de ressources
         editText_cible_value=(EditText) findViewById(R.id.editText_cible);
+        editText_cible_value.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         editText_source_value=(EditText) findViewById(R.id.editText_source);
+        editText_source_value.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         
         spinner_cible_value=(Spinner) findViewById(R.id.spinner_cible);
         spinner_source_value=(Spinner) findViewById(R.id.spinner_source);
+        
+        convert_button_listener = new ConvertButtonListener(editText_cible_value, editText_source_value, spinner_cible_value, spinner_source_value);
+        
+        convert_button=(Button) findViewById(R.id.convert_button);
+        convert_button.setOnClickListener(convert_button_listener);
     }
 
 	@Override
